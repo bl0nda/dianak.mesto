@@ -4,3 +4,121 @@
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
+
+@import url(../blocks/profile/profile.css);
+
+.profile__info {
+  display: grid;
+  grid-template-columns: 120px auto 24px;
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  grid-template-areas:
+    "avatar name edit-button"
+    "avatar career career";
+  align-items: end;
+}
+
+.profile__avatar {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  grid-area: avatar;
+}
+
+@media screen and (max-width: 640px) {
+    .profile__avatar {
+        width: 100px;
+        height: 100px;
+    }
+  }
+
+.profile__name {
+  margin: 0;
+  font-size: 42px;
+  line-height: 1.14;
+  font-weight: 500;
+  padding: 22px 18px 0 30px;
+  grid-area: name;
+}
+
+@media screen and (max-width: 854px) {
+  .profile__name {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .profile__name {
+    font-size: 28px;
+    padding-left: 20px;
+  }
+}
+
+.profile__career {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.22;
+  font-weight: 400;
+  padding-left: 30px;
+  padding-top: 16px;
+  grid-area: career;
+}
+
+@media screen and (max-width: 640px) {
+    .profile__career {
+      font-size: 14px;
+      padding-left: 20px;
+    }
+  }
+
+.profile__edit-button {
+  background-image: url(../images/Vector.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+  border: 1px solid white;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  grid-area: edit-button;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 640px) {
+  .profile__edit-button {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 6px;
+  }
+}
+
+.add-button {
+  width: 150px;
+  height: 50px;
+  border: 2px solid white;
+  align-items: center;
+  background-image: url(../images/plus.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+}
+
+@media screen and (max-width: 854px) {
+  .add-button {
+    width: 100px;
+    height: 42px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .add-button {
+    width: 80px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+    .add-button {
+      width: 50px;
+      height: 32px;
+      
+    }
+  }
