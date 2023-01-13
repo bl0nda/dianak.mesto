@@ -25,11 +25,11 @@
 }
 
 @media screen and (max-width: 640px) {
-    .profile__avatar {
-        width: 100px;
-        height: 100px;
-    }
+  .profile__avatar {
+    width: 100px;
+    height: 100px;
   }
+}
 
 .profile__name {
   margin: 0;
@@ -64,17 +64,15 @@
 }
 
 @media screen and (max-width: 640px) {
-    .profile__career {
-      font-size: 14px;
-      padding-left: 20px;
-    }
+  .profile__career {
+    font-size: 14px;
+    padding-left: 20px;
   }
+}
 
 .profile__edit-button {
-  background-image: url(../images/Vector.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: black;
+  background-image: url(../images/Edit\ Button.svg);
+  background-color: transparent;
   border: 1px solid white;
   box-sizing: border-box;
   width: 24px;
@@ -95,11 +93,12 @@
   width: 150px;
   height: 50px;
   border: 2px solid white;
+  box-sizing: border-box;
   align-items: center;
-  background-image: url(../images/plus.svg);
+  background-image: url(../images/Add.svg);
   background-repeat: no-repeat;
   background-position: center;
-  background-color: black;
+  background-color: transparent;
 }
 
 @media screen and (max-width: 854px) {
@@ -116,9 +115,65 @@
 }
 
 @media screen and (max-width: 640px) {
-    .add-button {
-      width: 50px;
-      height: 32px;
-      
-    }
+  .add-button {
+    width: 50px;
+    height: 32px;
   }
+}
+
+.elements {
+  margin: 0 auto;
+  max-width: calc(100% - 200px * 2);
+}
+
+.cards {
+  margin: 0 auto;
+  padding: 51px 0 66px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px 17px;
+}
+
+.cards__element {
+  max-width: 282px;
+  min-height: 361px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.cards__image {
+  max-width: 282px;
+  max-height: 282px;
+  object-fit: cover;
+}
+
+.cards__description {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 23px;
+  max-width: 246px;
+  margin: 25px 15px 31px 21px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cards__title {
+  font-size: 24px;
+  line-height: 1.2;
+  color: #000;
+  font-weight: 900;
+  margin: 0;
+}
+
+.cards__like {
+  background-image: url(../images/Like.svg);
+  background-color: transparent;
+  width: 22px;
+  height: 19px;
+}
