@@ -1,0 +1,9 @@
+.profile__info {
+  display: grid;
+  grid-template-columns: 120px auto 24px;
+  grid-template-rows: repeat(2, minmax(min-content, max-content));
+  grid-template-areas:
+    "avatar name edit-button"
+    "avatar career career";
+  align-items: start;
+}

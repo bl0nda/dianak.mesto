@@ -1,0 +1,16 @@
+.profile__career {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.22;
+  font-weight: 400;
+  padding-left: 30px;
+  padding-top: 16px;
+  grid-area: career;
+}
+
+@media screen and (max-width: 640px) {
+  .profile__career {
+    font-size: 14px;
+    padding-left: 20px;
+  }
+}

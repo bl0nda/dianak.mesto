@@ -1,0 +1,4 @@
+.elements {
+  margin: 0 auto;
+  max-width: calc(100% - 200px * 2);
+}

@@ -1,178 +1,29 @@
 @import url(../vendor/normalize.css);
 
+@import url(../vendor/fonts/Inter/inter.css);
+
 @import url(../blocks/page/page.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__career/profile__career.css);
+@import url(../blocks/profile/__edit-button/profile__edit-button.css);
 
-.profile__info {
-  display: grid;
-  grid-template-columns: 120px auto 24px;
-  grid-template-rows: repeat(2, minmax(min-content, max-content));
-  grid-template-areas:
-    "avatar name edit-button"
-    "avatar career career";
-  align-items: end;
-}
+@import url(../blocks/add-button/add-button.css);
 
-.profile__avatar {
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  grid-area: avatar;
-}
+@import url(../blocks/elements/elements.css);
 
-@media screen and (max-width: 640px) {
-  .profile__avatar {
-    width: 100px;
-    height: 100px;
-  }
-}
+@import url(../blocks/cards/cards.css);
+@import url(../blocks/cards/__element/cards__element.css);
+@import url(../blocks/cards/__image/cards__image.css);
+@import url(../blocks/cards/__description/cards__description.css);
+@import url(../blocks/cards/__title/cards__title.css);
+@import url(../blocks/cards/__like/cards__like.css);
 
-.profile__name {
-  margin: 0;
-  font-size: 42px;
-  line-height: 1.14;
-  font-weight: 500;
-  padding: 22px 18px 0 30px;
-  grid-area: name;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-@media screen and (max-width: 854px) {
-  .profile__name {
-    font-size: 32px;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .profile__name {
-    font-size: 28px;
-    padding-left: 20px;
-  }
-}
-
-.profile__career {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.22;
-  font-weight: 400;
-  padding-left: 30px;
-  padding-top: 16px;
-  grid-area: career;
-}
-
-@media screen and (max-width: 640px) {
-  .profile__career {
-    font-size: 14px;
-    padding-left: 20px;
-  }
-}
-
-.profile__edit-button {
-  background-image: url(../images/Edit\ Button.svg);
-  background-color: transparent;
-  border: 1px solid white;
-  box-sizing: border-box;
-  width: 24px;
-  height: 24px;
-  grid-area: edit-button;
-  margin-bottom: 10px;
-}
-
-@media screen and (max-width: 640px) {
-  .profile__edit-button {
-    width: 18px;
-    height: 18px;
-    margin-bottom: 6px;
-  }
-}
-
-.add-button {
-  width: 150px;
-  height: 50px;
-  border: 2px solid white;
-  box-sizing: border-box;
-  align-items: center;
-  background-image: url(../images/Add.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: transparent;
-}
-
-@media screen and (max-width: 854px) {
-  .add-button {
-    width: 100px;
-    height: 42px;
-  }
-}
-
-@media screen and (max-width: 640px) {
-  .add-button {
-    width: 50px;
-    height: 32px;
-  }
-}
-
-.elements {
-  margin: 0 auto;
-  max-width: calc(100% - 200px * 2);
-}
-
-.cards {
-  margin: 0 auto;
-  padding: 51px 0 66px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 20px 17px;
-}
-
-.cards__element {
-  max-width: 282px;
-  min-height: 361px;
-  background-color: #fff;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.cards__image {
-  max-width: 282px;
-  height: 282px;
-  object-fit: cover;
-}
-
-.cards__description {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 23px;
-  max-width: 246px;
-  margin: 25px 15px 31px 21px;
-  
-}
-
-.cards__title {
-  font-size: 24px;
-  line-height: 1.2;
-  color: #000;
-  font-weight: 900;
-  margin: 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.cards__like {
-  background-image: url(../images/Like.svg);
-  background-color: transparent;
-  border: none;
-  min-width: 22px;
-  height: 19px;
-}
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__text/footer__text.css);
