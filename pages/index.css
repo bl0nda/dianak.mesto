@@ -38,6 +38,9 @@
   font-weight: 500;
   padding: 22px 18px 0 30px;
   grid-area: name;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 854px) {
@@ -108,12 +111,6 @@
   }
 }
 
-@media screen and (max-width: 768px) {
-  .add-button {
-    width: 80px;
-  }
-}
-
 @media screen and (max-width: 640px) {
   .add-button {
     width: 50px;
@@ -147,20 +144,18 @@
 
 .cards__image {
   max-width: 282px;
-  max-height: 282px;
+  height: 282px;
   object-fit: cover;
 }
 
 .cards__description {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   min-height: 23px;
   max-width: 246px;
   margin: 25px 15px 31px 21px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
+  
 }
 
 .cards__title {
@@ -169,11 +164,15 @@
   color: #000;
   font-weight: 900;
   margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .cards__like {
   background-image: url(../images/Like.svg);
   background-color: transparent;
-  width: 22px;
+  border: none;
+  min-width: 22px;
   height: 19px;
 }
