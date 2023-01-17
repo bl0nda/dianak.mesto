@@ -4,10 +4,3 @@
   height: 120px;
   grid-area: avatar;
 }
-
-@media screen and (max-width: 640px) {
-  .profile__avatar {
-    width: 100px;
-    height: 100px;
-  }
-}

@@ -8,3 +8,15 @@
   white-space: nowrap;
   overflow: hidden;
 }
+
+@media screen and (max-width: 854px) {
+  .cards__title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .cards__title {
+    font-size: 24px;
+  }
+}

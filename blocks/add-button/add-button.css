@@ -23,3 +23,10 @@
     height: 32px;
   }
 }
+
+@media screen and (max-width: 512px) {
+  .add-button {
+    width: 282px;
+    height: 50px;
+  }
+}

@@ -3,7 +3,16 @@
   grid-template-columns: 120px auto 24px;
   grid-template-rows: repeat(2, minmax(min-content, max-content));
   grid-template-areas:
-    "avatar name edit-button"
-    "avatar career career";
+    "avatar name"
+    "avatar career";
   align-items: start;
+}
+
+@media screen and (max-width: 512px) {
+  .profile__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }

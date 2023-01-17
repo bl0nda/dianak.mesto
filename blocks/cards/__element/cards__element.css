@@ -7,3 +7,9 @@
   flex-direction: column;
   overflow: hidden;
 }
+
+@media screen and (max-width: 512px) {
+  .cards__element {
+    min-width: 282px;
+  }
+}
