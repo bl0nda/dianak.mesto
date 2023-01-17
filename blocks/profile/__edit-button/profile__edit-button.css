@@ -6,7 +6,8 @@
   width: 24px;
   height: 24px;
   grid-area: edit-button;
-  margin-bottom: 10px;
+  margin-bottom: 22px;
+  align-self: end;
 }
 
 @media screen and (max-width: 640px) {
