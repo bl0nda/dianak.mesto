@@ -10,7 +10,7 @@
 
 <body class="page">
     <header class="header">
-        <img src="./images/logo.svg" alt="логотип 'места России'" class="header__logo">
+        <div class="header__logo"></div>
     </header>
     <main class="main">
         <section class="profile">
@@ -76,11 +76,13 @@
     </footer>
     <section class="popup">
         <div class="popup__element">
-            <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" class="popup__field popup__field_change_name" placeholder="Жак-Ив Кусто">
-            <input type="text" class="popup__field popup__field_change_job" placeholder="Исследователь океана">
-            <button type="button" class="popup__submit-button">Сохранить</button>
             <button type="button" class="popup__close-button"></button>
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <form class="popup__form">
+                <input type="text" class="popup__field popup__field_change_name">
+                <input type="text" class="popup__field popup__field_change_job">
+                <button type="submit" class="popup__submit-button">Сохранить</button>
+            </form>
         </div>
     </section>
     <script src="./scripts/index.js"></script>

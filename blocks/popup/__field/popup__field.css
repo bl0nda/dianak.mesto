@@ -9,3 +9,9 @@
   line-height: 1.21;
   color: black;
 }
+
+@media screen and (max-width: 512px) {
+  .popup__field {
+    width: 238px;
+  }
+}

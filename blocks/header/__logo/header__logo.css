@@ -1,6 +1,13 @@
 .header__logo {
   width: 142px;
   height: 33px;
+  background-image: url(../../../images/logo.svg);
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.header__logo:hover {
+  background-image: url(../../../images/logo\ hover.svg);
 }
 
 @media screen and (max-width: 512px) {

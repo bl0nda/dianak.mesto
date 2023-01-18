@@ -1,29 +1,33 @@
 const popupElement = document.querySelector('.popup');
-const popupCloseButton = popupElement.querySelector('popup__close-button');
+const popupCloseButton = popupElement.querySelector('.popup__close-button');
 const popupOpenButton = document.querySelector('.profile__edit-button');
-const popupFieldChangeName = popupElement.querySelector('.popup__field_change_name');
-const nameInput = document.querySelector('.popup__field_change_job');
-const jobInput = document.querySelector('.popup__submit-button');
-const popupSubmitButton = popupElement.querySelector('.popup__submit-button');
+const popupFormElement = popupElement.querySelector('.popup__form');
+const nameInput = document.querySelector('.popup__field_change_name');
+const jobInput = document.querySelector('.popup__field_change_job');
+const name = document.querySelector('.profile__name');
+const job = document.querySelector('.profile__job');
 
-const popupVisibility = function() {
-    popupElement.classList.toggle('popup_is_opened');
+
+const openPopup = function() {
+    popupElement.classList.add('popup_opened');
+    nameInput.value = name.textContent;
+    jobInput.value = job.textContent;
 }
 
-popupOpenButton.addEventListener('click', popupVisibility);
+popupOpenButton.addEventListener('click', openPopup);
+
+const closePopup = function() {
+    popupElement.classList.remove('popup_opened');
+}
+
+popupCloseButton.addEventListener('click', closePopup);
 
 function handleFormSubmit (evt) {
     evt.preventDefault(); 
-
-    // Получите значение полей jobInput и nameInput из свойства value
-    nameInput.value = nameInput.getAttribute('placeholder'); 
-    jobInput.value = jobInput.getAttribute('placeholder'); 
-    // Выберите элементы, куда должны быть вставлены значения полей
-    const name = document.querySelector('.profile__name');
-    const job = document.querySelector('.profile__job');
-    // Вставьте новые значения с помощью textContent
+    
     name.textContent = nameInput.value;
     job.textContent = jobInput.value;
+    closePopup();
 }
 
-popupSubmitButton.addEventListener('submit', handleFormSubmit); 
+popupFormElement.addEventListener('submit', handleFormSubmit); 

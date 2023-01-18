@@ -6,3 +6,10 @@
   padding: 34px 64px 54px 36px;
   color: black;
 }
+
+@media screen and (max-width: 512px) {
+  .popup__title {
+    font-size: 18px;
+    padding: 25px 22px 75px;
+  }
+}

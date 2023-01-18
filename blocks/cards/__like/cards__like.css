@@ -4,4 +4,14 @@
   border: none;
   min-width: 22px;
   height: 19px;
+  cursor: pointer;
+  transition: opacity ease-in-out;
+}
+
+.cards__like:hover {
+  opacity: 0.5;
+}
+
+.cards__like:active {
+  background-image: url(../../../images/Like\ black.svg);
 }

@@ -9,3 +9,10 @@
   align-items: center;
   position: relative;
 }
+
+@media screen and (max-width: 512px) {
+  .popup__element {
+    max-width: 282px;
+    min-height: 322px;
+  }
+}
