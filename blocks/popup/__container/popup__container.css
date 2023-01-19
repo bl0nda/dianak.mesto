@@ -1,4 +1,4 @@
-.popup__element {
+.popup__container {
   background-color: #fff;
   max-width: 430px;
   min-height: 330px;
@@ -11,7 +11,7 @@
 }
 
 @media screen and (max-width: 512px) {
-  .popup__element {
+  .popup__container {
     max-width: 282px;
     min-height: 322px;
   }
