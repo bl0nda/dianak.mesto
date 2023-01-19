@@ -18,4 +18,4 @@
 Проект написан в соответствии с БЭМ метологией. Также применена файловая структура *Nested*.
 
 
-https://bl0nda.github.io/dianak.russian-trav
+https://bl0nda.github.io/dianak.mesto/
