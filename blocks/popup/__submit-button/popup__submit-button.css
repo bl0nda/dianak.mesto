@@ -8,6 +8,8 @@
   line-height: 1.22;
   transition: opacity ease-in-out;
   cursor: pointer;
+  border: none;
+  border-radius: 2px;
 }
 
 .popup__submit-button:hover {
@@ -18,6 +20,8 @@
   .popup__submit-button {
     width: 238px;
     min-height: 46px;
-    margin: 45px 0 25px;
+    margin: 15px 0 25px;
+    font-size: 14px;
+    line-height: 1.21;
   }
 }

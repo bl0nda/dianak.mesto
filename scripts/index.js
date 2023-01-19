@@ -14,20 +14,18 @@ const openPopup = function() {
     jobInput.value = job.textContent;
 }
 
-popupOpenButton.addEventListener('click', openPopup);
-
 const closePopup = function() {
     popupElement.classList.remove('popup_opened');
 }
 
-popupCloseButton.addEventListener('click', closePopup);
-
 function handleFormSubmit (evt) {
     evt.preventDefault(); 
-    
     name.textContent = nameInput.value;
     job.textContent = jobInput.value;
     closePopup();
 }
+
+popupOpenButton.addEventListener('click', openPopup);
+popupCloseButton.addEventListener('click', closePopup);
 
 popupFormElement.addEventListener('submit', handleFormSubmit); 
