@@ -10,6 +10,8 @@
   background-color: transparent;
   transition: opacity ease-in-out;
   cursor: pointer;
+  grid-area: add-button;
+  align-self: center;
 }
 
 .profile__add-button:hover {
