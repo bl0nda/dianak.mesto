@@ -1,22 +1,22 @@
-.elements {
+.cards__container {
   margin: 0 auto;
   max-width: calc(100% - 200px * 2);
 }
 
 @media screen and (max-width: 1024px) {
-  .elements {
+  .cards__container {
     max-width: calc(100% - 100px * 2);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .elements {
+  .cards__container {
     max-width: calc(100% - 50px * 2);
   }
 }
 
 @media screen and (max-width: 512px) {
-  .elements {
+  .cards__container {
     max-width: calc(100% - 19px * 2);
   }
 }
