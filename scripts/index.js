@@ -21,7 +21,7 @@ const popupAddCardContainer = popupElementAddCard.querySelector('.popup__form_ty
 
 // переменные шаблон для карточек
 const template = document.querySelector('.cards').content.querySelector('.cards__element');
-const cardsContainer = document.querySelector('.cards__container');
+const cardsContainer = document.querySelector('.cards-container');
 
 //переменные с данными для карточек
 const imageInput = popupElementAddCard.querySelector('.popup__field_change_image');
