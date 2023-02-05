@@ -1,29 +1,3 @@
 .cards {
   margin: 0 auto;
-  /* padding: 0 0 66px; */
-  /* display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 20px 17px; */
-}
-
-/* @media screen and (max-width: 768px) {
-  .cards {
-    padding: 0 0 50px;
-  }
-} */
-
-/* @media screen and (max-width: 640px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 1fr);
-  }
-}
-
-@media screen and (max-width: 512px) {
-  .cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-} */
+} 
