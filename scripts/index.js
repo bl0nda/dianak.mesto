@@ -7,7 +7,7 @@ const popupElementBigImage = document.querySelector('.popup_type_big-image');
 const popupOpenButtonForProfile = document.querySelector('.profile__edit-button');
 const popupOpenButtonForCard = document.querySelector('.profile__add-button');
 
-const popupCloseButton = document.querySelectorAll('.popup__close-button');
+const popupCloseButtons = document.querySelectorAll('.popup__close-button');
 
 //переменные для редактирование данных профиля
 const nameInput = document.querySelector('.popup__field_change_name');
@@ -28,6 +28,7 @@ const imageInput = popupElementAddCard.querySelector('.popup__field_change_image
 const mestoNameInput = popupElementAddCard.querySelector('.popup__field_change_cards-name');
 
 // переменные для увеличения картинки
+const cardElement = template.querySelector('.cards__element');
 const bigImage = popupElementBigImage.querySelector('.popup__big-image');
 const bigImageCaption = popupElementBigImage.querySelector('.popup__image-caption');
 
@@ -58,7 +59,7 @@ function handleFormProfileSubmit (evt) {
 
 // функция закрытия для всех попапов
 
-popupCloseButton.forEach(item => {
+popupCloseButtons.forEach(item => {
     const closestPopup = item.closest('.popup');
     item.addEventListener('click', () => closePopup(closestPopup));
   });
@@ -128,4 +129,4 @@ popupEditProfileContainer.addEventListener('submit', handleFormProfileSubmit);
 
 popupOpenButtonForCard.addEventListener('click', addCard);
 popupAddCardContainer.addEventListener('submit', handleFormAddCardSubmit);
-template.addEventListener('click', openBigImage);
+cardsContainer.addEventListener('click', openBigImage);
