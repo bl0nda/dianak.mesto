@@ -15,7 +15,3 @@
     width: 238px;
   }
 }
-
-.popup__field:invalid {
-  border-bottom: 1px solid red;
-}

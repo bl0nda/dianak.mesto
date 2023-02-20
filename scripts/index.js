@@ -52,10 +52,12 @@ const bigImageCaption = popupElementBigImage.querySelector(
 // функции закрытия и открытия
 const openPopup = function (popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener('keydown', keyHandlerEsc);
 };
 
 const closePopup = function (popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener('keydown', keyHandlerEsc);
 };
 
 // открытие формы для редактирования профиля
@@ -91,12 +93,11 @@ popupElements.forEach((area) => {
 });
 
   // по нажатию Esc
-document.addEventListener('keydown', function(evt) {
-  const openedPopup = document.querySelector('.popup_opened');
+  function keyHandlerEsc(evt) {
   if (evt.key === 'Escape') {
-    closePopup(openedPopup);
+    closePopup(document.querySelector('.popup_opened'));
   };
-});
+};
 
 // открытие попапа увеличения изображения
 
@@ -108,6 +109,8 @@ function openBigImage() {
 
 function addCard() {
   openPopup(popupElementAddCard);
+  const buttonElement = popupElementAddCard.querySelector('.popup__submit-button_type_card');
+  buttonElement.setAttribute("disabled", "disabled");
 }
 
 // отображение карточек
@@ -159,16 +162,8 @@ function handleFormAddCardSubmit(evt) {
   popupAddCardContainer.reset();
 }
 
-// добавление карточки по клику на Enter
-function keyHandlerEnter(evt) {
-  if (evt.key === "Enter") {
-    handleFormAddCardSubmit(evt);
-  }
-}
-
 popupOpenButtonForProfile.addEventListener("click", editProfile);
 popupEditProfileContainer.addEventListener("submit", handleFormProfileSubmit);
 
 popupOpenButtonForCard.addEventListener("click", addCard);
-// template.addEventListener("click", openBigImage);
 popupAddCardContainer.addEventListener("submit", handleFormAddCardSubmit);
