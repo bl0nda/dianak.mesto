@@ -1,4 +1,12 @@
-const initialCards = [
+export const validationConfig = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__field',
+    submitButtonSelector: '.popup__submit-button',
+    inputErrorClass: 'popup__field_type_error',
+    errorClass: 'popup__field-error_active'
+  }
+
+  export const initialCards = [
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
