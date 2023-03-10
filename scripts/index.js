@@ -9,6 +9,7 @@ const popupElementEditProfile = document.querySelector(
   ".popup_type_profile-info"
 );
 const popupElementAddCard = document.querySelector(".popup_type_card");
+const popupElementBigImage = document.querySelector(".popup_type_big-image");
 
 // кнопки открытия и закрытия попапов данные профиля и карточки
 const popupOpenButtonForProfile = document.querySelector(
@@ -32,6 +33,8 @@ const popupAddCardContainer = popupElementAddCard.querySelector(
   ".popup__form_type_card"
 );
 
+const container = document.querySelector(".cards-container");
+
 //переменные с данными для карточек
 const imageInput = popupElementAddCard.querySelector(
   ".popup__field_change_image"
@@ -43,12 +46,12 @@ const mestoNameInput = popupElementAddCard.querySelector(
 // функции закрытия и открытия
 const openPopup = function (popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener("keydown", keyHandlerEsc);
+  document.addEventListener("keydown", closeByEscape);
 };
 
 const closePopup = function (popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", keyHandlerEsc);
+  document.removeEventListener("keydown", closeByEscape);
 };
 
 // открытие формы для редактирования профиля
@@ -68,6 +71,10 @@ function handleFormProfileSubmit(evt) {
   closePopup(popupElementEditProfile);
 }
 
+// переменные для попапа увеличения изображения
+const popupImage = popupElementBigImage.querySelector(".cards__image"); 
+const bigImageCaption = popupElementBigImage.querySelector(".popup__image-caption");
+
 // функции закрытия для всех попапов
 // по крестику
 popupCloseButtons.forEach((item) => {
@@ -85,7 +92,7 @@ popupElements.forEach((area) => {
 });
 
 // по нажатию Esc
-function keyHandlerEsc(evt) {
+function closeByEscape(evt) {
   if (evt.key === "Escape") {
     closePopup(document.querySelector(".popup_opened"));
   }
@@ -93,15 +100,27 @@ function keyHandlerEsc(evt) {
 
 // отображение карточек
 
+function createCard({ name, link }) {
+  const card = new Card({ name, link }, ".cards", handleCardClick);
+
+  return card.generateCard();
+}
+
 const renderCards = (item) => {
-  const card = new Card(item, ".cards__element");
-  const container = document.querySelector(".cards-container");
-  container.prepend(card.generateCard());
+  const cardContainer = createCard(item);
+  container.prepend(cardContainer);
 };
 
 initialCards.forEach(function (item) {
   renderCards(item);
 });
+
+function handleCardClick(name, link) {
+  popupImage.src = link;
+  popupImage.alt = name;
+  bigImageCaption.textContent = name;
+  openPopup(popupElementBigImage);
+}
 
 function handleFormAddCardSubmit(evt) {
   evt.preventDefault();
@@ -118,10 +137,10 @@ function handleFormAddCardSubmit(evt) {
 
 function addCard() {
   openPopup(popupElementAddCard);
-  const buttonElement = popupElementAddCard.querySelector(
-    ".popup__submit-button_type_card"
-  );
-  buttonElement.setAttribute("disabled", "disabled");
+  // const buttonElement = popupElementAddCard.querySelector(
+  //   ".popup__submit-button_type_card"
+  // );
+  // buttonElement.setAttribute("disabled", "disabled");
 }
 
 // валидация форм
