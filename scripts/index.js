@@ -72,7 +72,7 @@ function handleFormProfileSubmit(evt) {
 }
 
 // переменные для попапа увеличения изображения
-const popupImage = popupElementBigImage.querySelector(".cards__image"); 
+const popupImage = popupElementBigImage.querySelector(".popup__big-image"); 
 const bigImageCaption = popupElementBigImage.querySelector(".popup__image-caption");
 
 // функции закрытия для всех попапов
@@ -137,10 +137,7 @@ function handleFormAddCardSubmit(evt) {
 
 function addCard() {
   openPopup(popupElementAddCard);
-  // const buttonElement = popupElementAddCard.querySelector(
-  //   ".popup__submit-button_type_card"
-  // );
-  // buttonElement.setAttribute("disabled", "disabled");
+  addCardValidator.resetValidationMessage();
 }
 
 // валидация форм
