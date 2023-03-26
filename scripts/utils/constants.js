@@ -32,3 +32,17 @@ export const validationConfig = {
       link: 'https://images.unsplash.com/photo-1552857406-14af62dbf053?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80'
     }
   ];
+
+  // кнопки открытия и закрытия попапов данные профиля и карточки
+export const popupOpenButtonForProfile = document.querySelector(
+  ".profile__edit-button"
+);
+export const popupOpenButtonForCard = document.querySelector(".profile__add-button");
+
+// контейнеры попапов данные профиля и карточки
+export const popupEditProfileContainer = document.querySelector(
+  ".popup__form_type_profile-info"
+);
+export const popupAddCardContainer = document.querySelector(
+  ".popup__form_type_card"
+);
