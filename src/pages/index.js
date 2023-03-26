@@ -1,17 +1,19 @@
-import { initialCards } from "./utils/constants.js";
-import { Card } from "./components/Card.js";
-import { validationConfig } from "./utils/constants.js";
-import { FormValidator } from "./components/FormValidate.js";
-import Section from "./components/Section.js";
-import UserInfo from "./components/UserInfo.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import PopupWithImage from "./components/PopupWithImage.js";
+import './index.css';
+
+import { initialCards } from "../utils/constants.js";
+import { Card } from "../components/Card.js";
+import { validationConfig } from "../utils/constants.js";
+import { FormValidator } from "../components/FormValidate.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import {
   popupOpenButtonForProfile,
   popupOpenButtonForCard,
   popupEditProfileContainer,
   popupAddCardContainer,
-} from "./utils/constants.js";
+} from "../utils/constants.js";
 
 const userInfo = new UserInfo(".profile__name", ".profile__job");
 

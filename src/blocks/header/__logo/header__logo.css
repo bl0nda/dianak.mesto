@@ -8,7 +8,7 @@
 }
 
 .header__logo:hover {
-  background-image: url(../../../images/logo\ hover.svg);
+  background-image: url(../../../images/logo-hover.svg);
 }
 
 @media screen and (max-width: 512px) {
