@@ -64,8 +64,8 @@ function createCard(data) {
   return card.generateCard();
 }
 
-const handleFormAddCardSubmit = ({name, link}) => {
-  cardSection.addItem(createCard({name, link}));
+const handleFormAddCardSubmit = (obj) => {
+  cardSection.addItem(createCard({name: obj.title, link: obj.link}));
 }
 
 const popupAddCard = new PopupWithForm(".popup_type_card", handleFormAddCardSubmit);
