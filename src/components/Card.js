@@ -1,11 +1,12 @@
 import PopupWithImage from "./PopupWithImage.js";
 
 export class Card {
-  constructor(data, templateSelector, openBigImage) {
+  constructor(data, templateSelector, openBigImage, api) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._openBigImage = openBigImage;
+    this._api = api;
   }
 
   _getTemplate() {

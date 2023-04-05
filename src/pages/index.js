@@ -1,6 +1,5 @@
 import './index.css';
 
-import { initialCards } from "../utils/constants.js";
 import { Card } from "../components/Card.js";
 import { validationConfig } from "../utils/constants.js";
 import { FormValidator } from "../components/FormValidate.js";
@@ -8,6 +7,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import Api from '../components/Api.js';
 import {
   popupOpenButtonForProfile,
   popupOpenButtonForCard,
@@ -15,10 +15,20 @@ import {
   popupAddCardContainer,
 } from "../utils/constants.js";
 
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-63',
+  headers: {
+    "content-type": 'application/json',
+     authorization: '33553b4a-ee5d-444d-b863-91098d8d5da2'
+  }
+});
+
+const cardSection = new Section(createCard, ".cards-container");
+
 const userInfo = new UserInfo(".profile__name", ".profile__job");
 
 const handleFormProfileSubmit = ({ name, job }) => {
-  userInfo.setUserInfo(name, job);
+  api.setProfileData(userInfo.setUserInfo(name, job));
 };
 
 const popupEditProfile = new PopupWithForm(
@@ -43,26 +53,19 @@ const handleOpenCardImage = ({ title, link }) => {
 
 popupBigImage.setEventListeners();
 
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: createCard,
-  },
-  ".cards-container"
-);
 
-cardSection.renderItems();
+// отображение карточек c сервера
 
-// отображение карточек
+api.getInitialCards().then((cards) => {
 
-function createCard(data) {
-  const card = new Card(data, ".cards", handleOpenCardImage);
+cardSection.renderItems(cards);
+});
 
-  return card.generateCard();
-}
+// добавление новых карточек
 
 const handleFormAddCardSubmit = (obj) => {
   cardSection.addItem(createCard({ name: obj.title, link: obj.link }));
+  api.pushNewCard(obj);
 };
 
 const popupAddCard = new PopupWithForm(
@@ -70,6 +73,12 @@ const popupAddCard = new PopupWithForm(
   handleFormAddCardSubmit
 );
 popupAddCard.setEventListeners();
+
+function createCard(data) {
+  const card = new Card(data, ".cards", handleOpenCardImage);
+
+  return card.generateCard();
+}
 
 // открытие формы для добавления карточек
 
