@@ -11,8 +11,10 @@ import Api from '../components/Api.js';
 import {
   popupOpenButtonForProfile,
   popupOpenButtonForCard,
+  popupOpenButtonAvatar,
   popupEditProfileContainer,
   popupAddCardContainer,
+  popupChangeAvatarContainer
 } from "../utils/constants.js";
 
 const api = new Api({
@@ -25,7 +27,7 @@ const api = new Api({
 
 const cardSection = new Section(createCard, ".cards-container");
 
-const userInfo = new UserInfo(".profile__name", ".profile__job");
+const userInfo = new UserInfo(".profile__name", ".profile__job", '.profile__avatar');
 
 const handleFormProfileSubmit = ({ name, job }) => {
   api.setProfileData(userInfo.setUserInfo(name, job));
@@ -36,7 +38,17 @@ const popupEditProfile = new PopupWithForm(
   handleFormProfileSubmit
 );
 
+const handleFormAvatarSubmit = ({link}) => {
+api.setNewAvatar(userInfo.setAvatar(link));
+};
+
+const popupChangeAvatar = new PopupWithForm(
+  '.popup_type_cnange-avatar',
+  handleFormAvatarSubmit
+);
+
 // открытие формы для редактирования профиля
+
 function editProfile() {
   popupEditProfile.setInputValues(userInfo.getUserInfo());
   editProfileValidator.resetValidationMessage();
@@ -44,6 +56,17 @@ function editProfile() {
 }
 
 popupEditProfile.setEventListeners();
+
+// открытие формы для смены аватарки
+
+function changeAvatar() {
+  changeAvatarValidator.resetValidationMessage();
+  popupChangeAvatar.open();
+}
+
+popupChangeAvatar.setEventListeners();
+
+// увеличение изображения
 
 const popupBigImage = new PopupWithImage(".popup_type_big-image");
 
@@ -53,11 +76,9 @@ const handleOpenCardImage = ({ title, link }) => {
 
 popupBigImage.setEventListeners();
 
-
 // отображение карточек c сервера
 
 api.getInitialCards().then((cards) => {
-
 cardSection.renderItems(cards);
 });
 
@@ -100,7 +121,16 @@ const addCardValidator = new FormValidator(
 );
 addCardValidator.enableValidation();
 
+
+const changeAvatarValidator = new FormValidator(
+  validationConfig,
+  popupChangeAvatarContainer
+)
+changeAvatarValidator.enableValidation();
+
 //
 popupOpenButtonForProfile.addEventListener("click", editProfile);
 
 popupOpenButtonForCard.addEventListener("click", openPopupAddCard);
+
+popupOpenButtonAvatar.addEventListener('click', changeAvatar);

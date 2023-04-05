@@ -12,6 +12,8 @@ export const popupOpenButtonForProfile = document.querySelector(
 );
 export const popupOpenButtonForCard = document.querySelector(".profile__add-button");
 
+export const popupOpenButtonAvatar = document.querySelector('.profile__change-avatar-button');
+
 // контейнеры попапов данные профиля и карточки
 export const popupEditProfileContainer = document.querySelector(
   ".popup__form_type_profile-info"
@@ -19,3 +21,5 @@ export const popupEditProfileContainer = document.querySelector(
 export const popupAddCardContainer = document.querySelector(
   ".popup__form_type_card"
 );
+
+export const popupChangeAvatarContainer = document.querySelector('.popup__form_type_change-avatar');
