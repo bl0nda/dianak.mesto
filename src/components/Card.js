@@ -1,12 +1,17 @@
 import PopupWithImage from "./PopupWithImage.js";
 
 export class Card {
-  constructor(data, templateSelector, openBigImage, api) {
+  constructor(
+    { data, userId, handleTrashClick, handleLikeClick }, templateSelector, openBigImage) {
     this._name = data.name;
     this._link = data.link;
+    this._id = data._id;
     this._templateSelector = templateSelector;
     this._openBigImage = openBigImage;
-    this._api = api;
+    this._userId = userId;
+    this._ownerId = ownerId;
+    this._handleTrashClick = handleTrashClick;
+    this._handleLikeClick = handleLikeClick;
   }
 
   _getTemplate() {
@@ -41,7 +46,7 @@ export class Card {
   }
 
   _handleCardClick() {
-    this._openBigImage({title: this._name, link: this._link});
+    this._openBigImage({ title: this._name, link: this._link });
   }
 
   _setEventListeners() {
