@@ -47,6 +47,16 @@ const popupChangeAvatar = new PopupWithForm(
   handleFormAvatarSubmit
 );
 
+
+
+Promise.all([api.getProfileData(), api.getInitialCards()])
+.then((userData, cards) => {
+userInfo.setUserInfo({name: userData.name, job: userData.job});
+userInfo.setAvatar({link: userData.avatar});
+userInfo.setUserId(userData._id);
+cardSection.renderItems(cards);
+})
+
 // открытие формы для редактирования профиля
 
 function editProfile() {
@@ -78,9 +88,9 @@ popupBigImage.setEventListeners();
 
 // отображение карточек c сервера
 
-api.getInitialCards().then((cards) => {
-cardSection.renderItems(cards);
-});
+// api.getInitialCards().then((cards) => {
+// cardSection.renderItems(cards);
+// });
 
 // добавление новых карточек
 
