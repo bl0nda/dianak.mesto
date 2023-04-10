@@ -1,3 +1,5 @@
+import { data } from "autoprefixer";
+
 export default class Api {
   constructor(options) {
     this._url = options.url;
@@ -28,13 +30,13 @@ export default class Api {
     }).then(this._getResult);
   }
 
-  setProfileData(name, job) {
+  setProfileData(data) {
     return fetch(`${this._url}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        name,
-        job,
+        name: data.name,
+        about: data.job,
       }),
     }).then(this._getResult);
   }
@@ -46,12 +48,12 @@ export default class Api {
     }).then(this._getResult);
   }
 
-  setNewAvatar(link) {
+  setNewAvatar(avatar) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
-        link
+        avatar
       }),
     }).then(this._getResult);
   }
@@ -61,5 +63,21 @@ export default class Api {
       method: "PUT",
       headers: this._headers
     }).then(this._getResult);
+  }
+
+  deleteLike() {
+    return fetch(`${this._url}/cards/cardId/likes`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+    .then(this._getResult);
+  }
+
+  deleteCard(cardId){
+    return fetch(`${this._url}/cards/${cardId}`, {
+      method: 'DELETE',
+      headers: this._headers,
+    })
+    .then(this._getResult);
   }
 }

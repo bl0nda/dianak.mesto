@@ -1,17 +1,18 @@
 import PopupWithImage from "./PopupWithImage.js";
 
 export class Card {
-  constructor(
-    { data, userId, handleTrashClick, handleLikeClick }, templateSelector, openBigImage) {
+  constructor(data, userId, templateSelector, openBigImage, handleTrashClick) {
     this._name = data.name;
     this._link = data.link;
-    this._id = data._id;
+    this._cardId = data._id;
+    this._ownerId = data.owner._id;
+    // this._likes = data.likes;
+    // this._likesCounter = this._element.querySelector('.cards__like-container');
+    this._userId = userId;
     this._templateSelector = templateSelector;
     this._openBigImage = openBigImage;
-    this._userId = userId;
-    this._ownerId = ownerId;
     this._handleTrashClick = handleTrashClick;
-    this._handleLikeClick = handleLikeClick;
+    // this._handleLikeClick = handleLikeClick;
   }
 
   _getTemplate() {
@@ -31,6 +32,10 @@ export class Card {
     this._cardImage.alt = this._name;
     this._cardImage.src = this._link;
 
+    this._likeBtn = this._element.querySelector(".cards__like");
+    this._deleteCardBtn = this._element.querySelector(".cards__delete");
+    this._hasTrashHidden();
+
     this._setEventListeners();
 
     return this._element;
@@ -40,9 +45,22 @@ export class Card {
     evt.target.classList.toggle("cards__like_active");
   }
 
+  _hasTrashHidden() {
+    if (this._userId !== this._ownerId) {
+      this._deleteCardBtn.remove();
+    }
+  }
+
   _deleteCard() {
     this._element.remove();
     this._element = null;
+  }
+
+  _handleDeleteCardClick = () => {
+    this._handleTrashClick(
+      this._cardId,
+      this._deleteCard
+      );
   }
 
   _handleCardClick() {
@@ -60,10 +78,6 @@ export class Card {
       this._handleCardClick();
     });
 
-    this._element
-      .querySelector(".cards__delete")
-      .addEventListener("click", () => {
-        this._deleteCard();
-      });
+    this._deleteCardBtn.addEventListener("click", this._handleTrashClick);
   }
 }
