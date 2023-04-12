@@ -36,7 +36,7 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify({
         name: data.name,
-        about: data.job,
+        about: data.about,
       }),
     }).then(this._getResult);
   }
@@ -52,21 +52,19 @@ export default class Api {
     return fetch(`${this._url}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        avatar
-      }),
+      body: JSON.stringify(avatar)
     }).then(this._getResult);
   }
 
-  setLike() {
-    return fetch(`${this._url}/cards/cardId/likes`, {
+  setLike(cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: this._headers
     }).then(this._getResult);
   }
 
-  deleteLike() {
-    return fetch(`${this._url}/cards/cardId/likes`, {
+  deleteLike(cardId) {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: this._headers,
     })

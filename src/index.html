@@ -13,12 +13,12 @@
     <main class="main">
       <section class="profile">
         <button type="button" class="profile__change-avatar-button">
-        <img
-          src="<%=require('./images/avatar.jpg')%>"
-          alt="аватарка"
-          class="profile__avatar"
-        />
-      </button>
+          <img
+            src="<%=require('./images/avatar.jpg')%>"
+            alt="аватарка"
+            class="profile__avatar"
+          />
+        </button>
         <div class="profile__name-container">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit-button"></button>
@@ -59,7 +59,7 @@
               type="text"
               minlength="2"
               maxlength="200"
-              name="job"
+              name="about"
               id="change-job"
               class="popup__field popup__field_change_job"
               placeholder="Вид деятельности"
@@ -112,7 +112,10 @@
           </label>
           <button
             type="submit"
-            class="popup__submit-button popup__submit-button_type_card">Создать</button>
+            class="popup__submit-button popup__submit-button_type_card"
+          >
+            Создать
+          </button>
         </form>
       </div>
     </section>
@@ -129,50 +132,61 @@
       <div class="popup__container">
         <button type="button" class="popup__close-button"></button>
         <h2 class="popup__title popup__title_position_start">Вы уверены?</h2>
-        <button
-          type="submit"
-          class="popup__submit-button popup__submit-button_type_confirm">Да</button>
+        <form
+          name="confirm-delete"
+          class="popup__form popup__form_type_confirm"
+          novalidate
+        >
+          <button
+            type="submit"
+            class="popup__submit-button popup__submit-button_type_confirm"
+          >
+            Да
+          </button>
+        </form>
       </div>
     </section>
     <section class="popup popup_type_cnange-avatar">
-        <div class="popup__container">
-          <button type="button" class="popup__close-button"></button>
-          <h2 class="popup__title popup__title_position_start">Обновить аватар</h2>
-          <form
-            name="change-avatar"
-            class="popup__form popup__form_type_change-avatar"
-            novalidate
-          >
-            <label class="popup__field-container">
-              <input
+      <div class="popup__container">
+        <button type="button" class="popup__close-button"></button>
+        <h2 class="popup__title popup__title_position_start">
+          Обновить аватар
+        </h2>
+        <form
+          name="change-avatar"
+          class="popup__form popup__form_type_change-avatar"
+          novalidate
+        >
+          <label class="popup__field-container">
+            <input
               type="url"
-              name="link"
+              name="avatar"
               id="change-avatar"
               class="popup__field popup__field_change_avatar"
               placeholder="Ссылка на картинку"
               required
-              />
-              <span class="popup__field-error change-avatar-error"></span>
-            </label>
-            <button
-              type="submit"
-              class="popup__submit-button popup__submit-button_type_change-avatar"
-              disabled
-            >
-              Сохранить
-            </button>
-          </form>
-        </div>
-      </section>
+            />
+            <span class="popup__field-error change-avatar-error"></span>
+          </label>
+          <button
+            type="submit"
+            class="popup__submit-button popup__submit-button_type_change-avatar"
+            disabled
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </section>
     <template class="cards">
       <div class="cards__element">
         <img src="#" alt="" class="cards__image" />
         <div class="cards__description">
           <h2 class="cards__title"></h2>
           <div class="cards__like-container">
-          <button type="button" class="cards__like"></button>
-          <p class="cards__like-counter">0</p>
-        </div>
+            <button type="button" class="cards__like"></button>
+            <p class="cards__like-counter">0</p>
+          </div>
         </div>
         <button type="button" class="cards__delete"></button>
       </div>

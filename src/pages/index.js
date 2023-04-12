@@ -7,6 +7,7 @@ import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import Api from "../components/Api.js";
 import {
   popupOpenButtonForProfile,
@@ -16,6 +17,7 @@ import {
   popupAddCardContainer,
   popupChangeAvatarContainer,
 } from "../utils/constants.js";
+import { data } from "autoprefixer";
 
 const api = new Api({
   url: "https://mesto.nomoreparties.co/v1/cohort-63",
@@ -36,35 +38,34 @@ const userInfo = new UserInfo(
 // загрузка данных с сервера
 
 Promise.all([api.getProfileData(), api.getInitialCards()]).then(
-  ([userData, cards]) => {
-    const { name, about, avatar, _id } = userData;
-    userInfo.setUserInfo({ name, about });
-    userInfo.setAvatar(avatar);
-    userInfo.setUserId(_id);
+  ([data, cards]) => {
+    userInfo.setUserInfo(data);
+    userInfo.setUserId(data._id);
     cardSection.renderItems(cards);
-  }
-);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // редактирование данных профиля
 
-const handleFormProfileSubmit = ({ name, about }) => {
-  api.setProfileData(userInfo.setUserInfo({name, about}));
+const handleFormProfileSubmit = (data) => {
+  api.setProfileData(data).then((res) => {
+    popupEditProfile.renderLoading(true);
+    userInfo.setUserInfo(res);
+    popupEditProfile.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(() => {
+    popupEditProfile.renderLoading(false);
+  });
 };
 
 const popupEditProfile = new PopupWithForm(
   ".popup_type_profile-info",
   handleFormProfileSubmit
-);
-
-// смена аватара
-
-const handleFormAvatarSubmit = ({ link }) => {
-  api.setNewAvatar(userInfo.setAvatar(link));
-};
-
-const popupChangeAvatar = new PopupWithForm(
-  ".popup_type_cnange-avatar",
-  handleFormAvatarSubmit
 );
 
 // открытие формы для редактирования профиля
@@ -76,6 +77,27 @@ function editProfile() {
 }
 
 popupEditProfile.setEventListeners();
+
+// смена аватара
+
+const handleFormAvatarSubmit = (avatar) => {
+  api.setNewAvatar(avatar).then((avatar) => {
+    popupChangeAvatar.renderLoading(true);
+    userInfo.setUserInfo(avatar);
+    popupChangeAvatar.close();
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(() => {
+    popupChangeAvatar.renderLoading(false);
+});
+};
+
+const popupChangeAvatar = new PopupWithForm(
+  ".popup_type_cnange-avatar",
+  handleFormAvatarSubmit
+);
 
 // открытие формы для смены аватарки
 
@@ -96,11 +118,24 @@ const handleOpenCardImage = ({ title, link }) => {
 
 popupBigImage.setEventListeners();
 
+// удаление карточки
+
+const popupDeleteCard = new PopupWithConfirmation(".popup_type_confirm-delete");
+popupDeleteCard.setEventListeners();
+
 // добавление новых карточек
 
 const handleFormAddCardSubmit = (obj) => {
-  cardSection.addItem(createCard({ name: obj.title, link: obj.link }));
-  api.pushNewCard(obj);
+  api.pushNewCard(obj).then((res) => {
+    popupAddCard.renderLoading(true);
+    cardSection.addItem(createCard(res, res.owner._id));
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(() => {
+    popupAddCard.renderLoading(false);
+  });
 };
 
 const popupAddCard = new PopupWithForm(
@@ -111,13 +146,48 @@ popupAddCard.setEventListeners();
 
 function createCard(data) {
   const userId = userInfo.getUserId();
-  const card = new Card(
+  const card = new Card({
     data,
     userId,
-    ".cards",
-    handleOpenCardImage);
+    templateSelector: ".cards",
+    openBigImage: handleOpenCardImage,
+    handleTrashClick: (data) => {
+      popupDeleteCard.open();
+      popupDeleteCard.submitToDelete(() => {
+        api.deleteCard(data).then(() => {
+          card._deleteCard(data._id);
+          popupDeleteCard.close();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      });
+    },
+    handleLikeClick: () => {
+      if (!card.getCardLike()) {
+        console.log(card.getCardLike());
+        api
+          .setLike(data._id)
+          .then((data) => {
+            card.likeCard(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      } else {
+        api
+          .deleteLike(data._id)
+          .then((data) => {
+            card.likeCard(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+      }
+    }
+  });
 
-  return card.generateCard();
+  return card.generateCard(data);
 }
 
 // открытие формы для добавления карточек
