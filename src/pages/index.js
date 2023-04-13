@@ -50,8 +50,8 @@ Promise.all([api.getProfileData(), api.getInitialCards()]).then(
 // редактирование данных профиля
 
 const handleFormProfileSubmit = (data) => {
+  popupEditProfile.renderLoading(true);
   api.setProfileData(data).then((res) => {
-    popupEditProfile.renderLoading(true);
     userInfo.setUserInfo(res);
     popupEditProfile.close();
   })
@@ -81,8 +81,8 @@ popupEditProfile.setEventListeners();
 // смена аватара
 
 const handleFormAvatarSubmit = (avatar) => {
+  popupChangeAvatar.renderLoading(true);
   api.setNewAvatar(avatar).then((avatar) => {
-    popupChangeAvatar.renderLoading(true);
     userInfo.setUserInfo(avatar);
     popupChangeAvatar.close();
   })
@@ -126,8 +126,8 @@ popupDeleteCard.setEventListeners();
 // добавление новых карточек
 
 const handleFormAddCardSubmit = (obj) => {
+  popupAddCard.renderLoading(true);
   api.pushNewCard(obj).then((res) => {
-    popupAddCard.renderLoading(true);
     cardSection.addItem(createCard(res, res.owner._id));
   })
   .catch((err) => {
@@ -135,6 +135,7 @@ const handleFormAddCardSubmit = (obj) => {
   })
   .finally(() => {
     popupAddCard.renderLoading(false);
+    popupAddCard.close();
   });
 };
 
@@ -155,7 +156,7 @@ function createCard(data) {
       popupDeleteCard.open();
       popupDeleteCard.submitToDelete(() => {
         api.deleteCard(data).then(() => {
-          card._deleteCard(data._id);
+          card.deleteCard(data._id);
           popupDeleteCard.close();
         })
         .catch((err) => {
